@@ -7,20 +7,20 @@ Rate::Rate(float hz) {
     previous_time = millis();
 }
 
-long cycleTime() {
+long Rate::cycleTime() {
     return millis() - previous_time;
 }
 
-long expectedCycleTime() {
+long Rate::expectedCycleTime() {
     return millis_time;
 }
 
-void reset() {
+void Rate::reset() {
     previous_time = millis();
 }
 
-bool sleep() {
-    current_time = millis();
+bool Rate::sleep() {
+    unsigned long current_time = millis();
     while(current_time - previous_time < millis_time) {
         current_time = millis();
     }
